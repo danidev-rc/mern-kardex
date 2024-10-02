@@ -3,9 +3,7 @@ import Categoria from '../models/categorias.model.js'
 // metodo para obtener todas las categorias
 export const getCategorias = async (req, res) => {
   try {
-    const categorias = await Categoria.find({
-      productos: { $exists: true, $ne: [] }
-    }).populate('productos')
+    const categorias = await Categoria.find()
     res.json(categorias)
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong' })
@@ -25,9 +23,9 @@ export const getCategoria = async (req, res) => {
 
 // metodo para crear una categoria
 export const createCategoria = async (req, res) => {
-  const { nombre, productos } = req.body
+  const { nombre } = req.body
   try {
-    const categoria = new Categoria({ nombre, productos })
+    const categoria = new Categoria({ nombre })
     await categoria.save()
     res.json(categoria)
   } catch (error) {

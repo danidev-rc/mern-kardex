@@ -6,9 +6,9 @@ const categoriasSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  productos: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'productos'
+  fechaRegistro: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true

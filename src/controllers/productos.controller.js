@@ -23,9 +23,9 @@ export const getProducto = async (req, res) => {
 
 // metodo para crear un producto
 export const createProducto = async (req, res) => {
-  const { nombre, precioCompra, precioVenta, cantidadStock, fechaRegistro } = req.body
+  const { nombre, precioCompra, precioVenta, cantidadStock, categoria } = req.body
   try {
-    const producto = new Productos({ nombre, precioCompra, precioVenta, cantidadStock, fechaRegistro })
+    const producto = new Productos({ nombre, precioCompra, precioVenta, cantidadStock, categoria })
     await producto.save()
     res.json(producto)
   } catch (error) {
